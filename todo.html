@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Daftar Tugasku</title>
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="todo-style.css"/>
+</head>
+<body>
+
+  <main class="app">
+
+    <!-- HEADER -->
+    <header class="app-header">
+      <div>
+        <h1 class="app-title">Daftar<br/><em>Tugasku</em></h1>
+        <p class="app-date" id="app-date"></p>
+      </div>
+      <div class="progress-wrap" title="Progres hari ini">
+        <svg class="progress-ring" viewBox="0 0 48 48">
+          <circle class="ring-bg" cx="24" cy="24" r="20"/>
+          <circle class="ring-fill" id="ring-fill" cx="24" cy="24" r="20"/>
+        </svg>
+        <span class="progress-pct" id="progress-pct">0%</span>
+      </div>
+    </header>
+
+    <!-- STATS BAR -->
+    <div class="stats-bar">
+      <div class="stat"><span id="s-total">0</span><label>Total</label></div>
+      <div class="stat"><span id="s-active">0</span><label>Aktif</label></div>
+      <div class="stat"><span id="s-done">0</span><label>Selesai</label></div>
+      <div class="stat danger-stat"><span id="s-overdue">0</span><label>Terlambat</label></div>
+    </div>
+
+    <!-- ADD FORM -->
+    <div class="add-form">
+      <div class="add-main-row">
+        <input type="text" id="task-input" placeholder="Tambah tugas baru…" maxlength="150" autocomplete="off"/>
+        <button id="add-btn">+ Tambah</button>
+      </div>
+      <div class="add-meta-row">
+        <div class="meta-group">
+          <label>Prioritas</label>
+          <div class="seg-ctrl" id="priority-ctrl">
+            <button class="seg active" data-val="rendah">Rendah</button>
+            <button class="seg" data-val="sedang">Sedang</button>
+            <button class="seg" data-val="tinggi">Tinggi</button>
+          </div>
+        </div>
+        <div class="meta-group">
+          <label>Kategori</label>
+          <select id="cat-select">
+            <option value="umum">📋 Umum</option>
+            <option value="kerja">💼 Kerja</option>
+            <option value="belajar">📚 Belajar</option>
+            <option value="pribadi">🏠 Pribadi</option>
+            <option value="belanja">🛒 Belanja</option>
+          </select>
+        </div>
+        <div class="meta-group">
+          <label>Tenggat</label>
+          <input type="date" id="due-input"/>
+        </div>
+      </div>
+    </div>
+
+    <!-- TOOLBAR -->
+    <div class="toolbar">
+      <div class="filter-tabs" id="filter-tabs">
+        <button class="ftab active" data-f="semua">Semua</button>
+        <button class="ftab" data-f="aktif">Aktif</button>
+        <button class="ftab" data-f="selesai">Selesai</button>
+        <button class="ftab" data-f="terlambat">Terlambat</button>
+      </div>
+      <div class="toolbar-right">
+        <select id="sort-select">
+          <option value="newest">Terbaru</option>
+          <option value="oldest">Terlama</option>
+          <option value="priority">Prioritas</option>
+          <option value="due">Tenggat</option>
+          <option value="alpha">A–Z</option>
+        </select>
+        <input type="text" id="search-input" placeholder="🔍 Cari…"/>
+      </div>
+    </div>
+
+    <!-- TASK LIST -->
+    <ul class="task-list" id="task-list"></ul>
+
+    <!-- FOOTER -->
+    <footer class="app-footer">
+      <span id="count-text"></span>
+      <div class="footer-actions">
+        <button id="undo-btn" class="foot-btn" disabled>↩ Undo</button>
+        <button id="clear-btn" class="foot-btn danger">Hapus selesai</button>
+      </div>
+    </footer>
+
+  </main>
+
+  <script src="todo-script.js"></script>
+</body>
+</html>
